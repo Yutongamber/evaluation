@@ -63,6 +63,6 @@ if __name__ == "__main__":
     table = sort_table(list)
     print('sorted_table', table)
 
-
+    print("##")
 
 

@@ -3,7 +3,7 @@
 Coder：Yutongamber
 function: sample
 
-# sample function
+# sample function 2
 # input:
 # {5: {1:1000,2:1200}, 4: {2:1000}}
 # 4,5: 代表 env
@@ -14,6 +14,14 @@ function: sample
 # output:
 # key = ['agents','env_id']
 # pairs = [['1,2',2],['2,3',3],['1,5',1]]
+'''
+
+'''
+sample 1
+# input:
+# {5: {1:1000, 2:1200, 3:1000}}
+# output:
+# ['2,3',5]
 '''
 
 import operator
@@ -33,8 +41,23 @@ def sort(dictt):
     sorted_dictt = dict(sorted_dictt) # list 转 dict [(3, 4), (4, 3), (1, 2), (2, 1), (0, 0)]
     return sorted_dictt # {3: 4, 4: 3, 1: 2, 2: 1, 0: 0}
 
+def sample_player1(list, sub_id):
+    pairs = []
+    for keys, values in list.items():
+        values = sort(values)
+        length = len(values)
+        all_players_env = []
+        for key_ in values.keys():
+            all_players_env.append(key_)
+        if all_players_env.index(sub_id) == 0:
+            pair_ = (str(all_players_env[all_players_env.index(sub_id)+1]), str(sub_id))
+            pairs.append([','.join(pair_), keys])
+        else:
+            pair_ = (str(sub_id), str(all_players_env[all_players_env.index(sub_id) - 1]))
+            pairs.append([','.join(pair_), keys])
+        return pairs
 
-def sample_player(list):
+def sample_player2(list):
     ###############################################
     pairs = []
     for keys, values in list.items():
@@ -61,14 +84,19 @@ def sample_player(list):
                 pairs.append([','.join(pair_), keys])
     return pairs
 
+
+
 if __name__ == "__main__":
     # 测试list # list可乱序
     list = {4: {2: 1000, 1: 900, 3: 800, 4: 600}}
-    list = {5: {1: 1000, 2: 1200, 3: 900}}
+    list = {5: {1: 1000, 2: 800, 3: 900}}
     list = {5: {1: 1000, 2: 1200, 3: 900}, 4: {2: 1000, 1: 900, 3: 800, 4: 600}}
     list = {5: {1: 1000, 2: 1200, 3: 900}, 4: {2: 1000, 1: 900, 3: 800, 4: 600}, 3:{1:1000}}
-    pairs = sample_player(list)
+    list1 = {5: {1: 1000, 2: 800, 3: 900}}
+    pairs = sample_player2(list)
+    pairs1 = sample_player1(list1, 1)
     print(pairs)
+    print(pairs1)
 
 
 '''

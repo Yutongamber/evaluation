@@ -36,19 +36,6 @@ def eval_elo(agents_id, results, env_id, score_current, K = 42):
 
     return [score_update0, score_update1]
 
-
-
-'''
-sample function
-input:
-{5: {1:1000,2:1200}, 4: {2:1000}}
-
-
-output:
-# key = ['agents','env_id']
-values = [['1,2',2],['2,3',3],['1,5',1]]
-'''
-
 if __name__ == "__main__":
     agents_id = ['1', '2']
     results = {'1': '{"1": 1, "2": 0, "sum_return": 1}', '2': '{"1": 0, "2": 1, "sum_return": 0}'}

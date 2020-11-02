@@ -57,6 +57,7 @@ def sample_player1(list, sub_id):
             pairs.append([','.join(pair_), keys])
         return pairs
 
+
 def sample_player2(list):
     ###############################################
     pairs = []
